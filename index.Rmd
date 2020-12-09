@@ -1,0 +1,389 @@
+---
+title: "Daniel Czarnievicz"
+author: Daniel Czarnievicz
+date: "`r Sys.Date()`"
+output:
+  pagedown::html_resume:
+    css: ['styles.css']
+    # set it to true for a self-contained HTML page but it'll take longer to render
+    self_contained: true
+links-to-footnotes: true
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  results = 'asis', 
+  echo = FALSE
+)
+library(magrittr)
+
+build_position <- function(pos){
+  
+  missing_start <- is.null(pos$start)
+  dates_same <- pos$end == pos$start
+  
+  if(any(c(missing_start,dates_same))){
+    timeline <- pos$end
+  } else {
+    timeline <- glue::glue('{pos$end} - {pos$start}')
+  }
+  
+  institution <- if(base::is.null(pos$institution)) 'N/A' else pos$institution
+  
+  glue::glue(
+    "### {pos$title}
+
+{pos$loc}
+
+{institution}
+
+{timeline}
+
+{paste('-', pos$description, collapse = '\n')}
+
+"
+  ) %>% 
+    base::print()
+}
+
+order_by_end <- function(positions){
+  order_of_positions <- positions %>% 
+    purrr::map_chr("end") %>%
+    base::order(decreasing = TRUE)
+  positions[order_of_positions]
+}
+
+print_section <- function(section_data){
+  section_data %>% 
+    order_by_end() %>% 
+    purrr::walk(build_position)
+}
+```
+
+```{r education}
+education <- base::list(
+  base::list(
+    title = "BS in Economics",
+    institution = "Montevideo, UY",
+    loc = "Udelar",
+    start = 2013,
+    end = 2018,
+    description = base::c(
+      "Average: 8.10"
+    )
+  ),
+  base::list(
+    loc = "Udelar",
+    title = "BS in Statistics",
+    institution = "Montevideo, UY",
+    start = 2016,
+    end = 2021,
+    description = base::c(
+      "Average: 8.43",
+      "Currently working on my final thesis on Bayesian Analysis"
+    )
+  )
+)
+```
+
+```{r research_positions}
+research_positions <- base::list(
+  base::list(
+    title = "Research assistant", 
+    loc = "Department of economics - FCS - Udelar", 
+    institution = "Montevideo, UY",
+    start = 2017,
+    end = 2019,
+    description = base::c(
+      "Research assistant in the Industrial Organization and Prices team lead by Dr. Leandro Zipitría"
+    )
+  )
+)
+```
+
+```{r industry_positions}
+industry_positions <- base::list(
+  base::list(
+    title = "Data Analyst", 
+    loc = "PedidosYa",
+    institution = "Montevideo, UY",
+    start = 2020,
+    end = 2020,
+    description = base::c(
+      "Web tracking and funnel analysis",
+      "A/B testing of new features",
+      "Research and data insights"
+    )
+  ),
+  base::list(
+    title = "Data Scientist", 
+    loc = "Datalab Consulting",
+    institution = "Montevideo, UY",
+    start = 2019,
+    end = 2020,
+    description = base::c(
+      "Sales and marketing campagin analysis",
+      "Built and mantaine dashboards using R",
+      "Porfolio segmentation and machine learning"
+    )
+  ),
+  base::list(
+    title = "Senior Credit and Collections Analyst for Microsoft Corp.",
+    loc = "Accenture",
+    institution = "Buenos Aires, AR",
+    start = 2013,
+    end = 2010,
+    description = base::c(
+      "Credit and collections",
+      "End of month reporting"
+    )
+  ),
+  base::list(
+    title = "District Specialist for General Motors",
+    loc = "IBM",
+    institution = "Buenos Aires, AR",
+    start = 2010,
+    end = 2008,
+    description = base::c(
+      "Customer care"
+    )
+  )
+)
+```
+
+```{r teaching_positions}
+teaching_positions <- base::list(
+  base::list(
+    title = "Teaching assistant",
+    loc = "Institute of Statistics - FCEA - Udelar",
+    institution = "Montevideo, UY",
+    start = 2020,
+    end = 2020,
+    description = base::c(
+      "Course: Machine Learning"
+    )
+  ),
+  base::list(
+    title = "Teaching assistant",
+    loc = "School of Social Sciences - Udelar",
+    institution = "Montevideo, UY",
+    start = 2019,
+    end = 2017,
+    description = base::c(
+      "Course: Mathematics for Social Sciences"
+    )
+  ),
+  base::list(
+    title = "Teaching assistant",
+    loc = "School of Social Sciences - Udelar",
+    institution = "Montevideo, UY",
+    start = 2017,
+    end = 2017,
+    description = base::c(
+      "Course: Introduction to Economics"
+    )
+  ),
+  base::list(
+    title = "Teacher",
+    loc = "Centro ROMA",
+    institution = "Montevideo, UY",
+    start = 2016,
+    end = 2016,
+    description = base::c(
+      "Course: Statistical analysis with R"
+    )
+  ),
+  base::list(
+    title = "Teaching assistant",
+    institution = "Buenos Aires, AR",
+    loc = "UCES",
+    start = 2012,
+    end = 2012,
+    description = base::c(
+      "Course: Social and Economic History"
+    )
+  )
+)
+```
+
+```{r press}
+about_me_press <- base::list(
+  base::list(
+    title = "[Comisión de Competencia investigará relación entre supermercados y proveedores](https://negocios.elpais.com.uy/noticias/comision-competencia-investigara-relacion-supermercados-proveedores.html)", 
+    loc = "El País", 
+    institution = "Montevideo, UY",
+    start = 2018,
+    end = 2018,
+    description = base::c(
+      "Press article about market competition."
+    )
+  )
+)
+
+by_me_press <- base::list(
+  # base::list(
+  #   title = "[The Great Student Migration](https://www.nytimes.com/interactive/2016/08/26/us/college-student-migration.html?smid=pl-share)", 
+  #   loc = "The New York Times", 
+  #   institution = "N/A",
+  #   start = 2016,
+  #   end = 2016,
+  #   description = c("Most shared and discussed article from the New York Times for August 2016.")
+  # )
+)
+```
+
+```{r academic_articles}
+academic_articles <- base::list(
+  base::list(
+    title = "[Concentración y precios en cinco mercados minoristas](http://cienciassociales.edu.uy/departamentodeeconomia/wp-content/uploads/sites/2/2018/11/0618.pdf)", 
+    loc = "Wroking paper - dECON", 
+    institution = "N/A",
+    start = 2018,
+    end = 2018,
+    description = base::c(
+      "Co-authored with Dr. Leandro Zipitría."
+    )
+  )
+)
+```
+
+```{r data_science_writings}
+data_science_writings <- base::list(
+  base::list(
+    title = "[UnaImagen.uy](https://www.unaimagen.uy/)",
+    loc = "N/A", 
+    end = 2020,
+    description = base::c(
+      "A long with other economits we created a blog where we post data visualizations about Uruguay. Our goal is to make available data that contributes to the public discusion and the national policy debate."
+    )
+  )
+)
+```
+
+```{css}
+.blocks {
+  
+  break-inside: avoid;
+  
+}
+```
+
+Aside
+================================================================================
+
+![Daniel Czarnievicz](foto_cv.jpg){width=80%}
+
+Contacto {#contact}
+--------------------------------------------------------------------------------
+
+- <i class="fa fa-envelope"></i> daniel.czarnievicz@gmail.com
+- <i class="fa fa-phone"></i> (+598) 91 787 420
+- <i class="fa fa-github"></i> [github.com/daczarne](https://github.com/daczarne)
+- <i class="fa fa-linkedin"></i> [danielczarnievicz](https://www.linkedin.com/in/danielczarnievicz/)
+- <i class="fab fa-stack-overflow"></i> [daniel](https://stackoverflow.com/users/5908830/daniel)
+- <i class="fa fa-twitter"></i> [\@daczarne](https://twitter.com/daczarne)
+- <i class="fas fa-link"></i> [daniel.czarnievicz](https://danielczarnievicz.netlify.app/portfolio/)
+
+Skills {#skills}
+--------------------------------------------------------------------------------
+
+- Data Science
+- Data Analysis
+- R/Python
+- SQL
+- HTML/CSS/JS
+- Git/Github
+
+Idiomas {#skills}
+--------------------------------------------------------------------------------
+
+- Spanish
+- English
+
+Disclaimer {#disclaimer}
+--------------------------------------------------------------------------------
+
+Built with R [**pagedown**](https://github.com/rstudio/pagedown). 
+
+<!--
+The source code is available at [github.com/nstrayer/cv](https://github.com/nstrayer/cv).
+-->
+
+Last update <br> `r stringr::str_to_title(paste0(lubridate::month(lubridate::today(), label = TRUE, abbr = FALSE), ", ", lubridate::year(lubridate::today())))`.
+
+Main
+================================================================================
+
+Daniel Czarnievicz {#title}
+--------------------------------------------------------------------------------
+
+I am interested in challenging Data Science and/or Data Analytics positions with a special focus on those positions that will require the development of Machine Learning algorithms and/or the construction of data analysis apps and dashboards. I am very experienced with R and SQL and have worked with Python and web technologies too.
+
+I hold dual Uruguayan and Polish citizenship and I'm willing to relocate to other countries in Latin America or Europe. You can find out more about me in my [web page](https://danielczarnievicz.netlify.app/portfolio/) or my [GitHub](https://github.com/daczarne).
+
+Education {data-icon=graduation-cap data-concise=true}
+--------------------------------------------------------------------------------
+
+```{r, results='asis', echo = FALSE}
+education %>% print_section()
+```
+
+Research postions {data-icon=laptop}
+--------------------------------------------------------------------------------
+
+```{r, results='asis', echo = FALSE}
+research_positions %>% print_section()
+```
+
+Industry positions {data-icon=suitcase}
+--------------------------------------------------------------------------------
+
+```{r}
+industry_positions %>% print_section()
+```
+
+Teaching positions {data-icon=chalkboard-teacher}
+--------------------------------------------------------------------------------
+
+```{r}
+teaching_positions %>% print_section()
+```
+
+Blog y Communication {data-icon=chart-line}
+--------------------------------------------------------------------------------
+
+```{r}
+data_science_writings %>% print_section()
+```
+
+\newpage
+
+Press {data-icon=newspaper}
+--------------------------------------------------------------------------------
+
+```{r}
+about_me_press %>% print_section()
+```
+
+<!--
+Selected Press (By)  {data-icon=newspaper}
+--------------------------------------------------------------------------------
+
+```{r, eval=FALSE}
+by_me_press %>% print_section()
+```
+-->
+
+Academic articles {data-icon=book}
+--------------------------------------------------------------------------------
+
+<!--
+::: aside
+I regularly blog about data science and visualization on my blog [LiveFreeOrDichotomize.](https://livefreeordichotomize.com/)
+:::
+-->
+
+```{r}
+academic_articles %>% print_section()
+```
+
