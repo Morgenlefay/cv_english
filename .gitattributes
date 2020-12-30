@@ -1,4 +1,5 @@
 *.Rmd linguist-detectable
 *.md linguist-detectable
+*.md linguist-documentation=false
 index.html linguist-vendored
 styles.css linguist-vendored
