@@ -108,7 +108,7 @@ industry_positions <- base::list(
     loc = "PedidosYa",
     institution = "Montevideo, UY",
     start = 2020,
-    end = 2020,
+    end = lubridate::year(lubridate::today()),
     description = base::c(
       "Web tracking and funnel analysis",
       "A/B testing of new features",
@@ -122,17 +122,17 @@ industry_positions <- base::list(
     start = 2019,
     end = 2020,
     description = base::c(
-      "Sales and marketing campagin analysis",
-      "Built and mantaine dashboards using R",
-      "Porfolio segmentation and machine learning"
+      "Sales and marketing campaign analysis",
+      "Built and maintained dashboards using R",
+      "Portfolio segmentation and machine learning"
     )
   ),
   base::list(
     title = "Senior Credit and Collections Analyst for Microsoft Corp.",
     loc = "Accenture",
     institution = "Buenos Aires, AR",
-    start = 2013,
-    end = 2010,
+    start = 2010,
+    end = 2013,
     description = base::c(
       "Credit and collections",
       "End of month reporting"
@@ -142,8 +142,8 @@ industry_positions <- base::list(
     title = "District Specialist for General Motors",
     loc = "IBM",
     institution = "Buenos Aires, AR",
-    start = 2010,
-    end = 2008,
+    start = 2008,
+    end = 2010,
     description = base::c(
       "Customer care"
     )
@@ -167,8 +167,8 @@ teaching_positions <- base::list(
     title = "Teaching assistant",
     loc = "School of Social Sciences - Udelar",
     institution = "Montevideo, UY",
-    start = 2019,
-    end = 2017,
+    start = 2017,
+    end = 2019,
     description = base::c(
       "Course: Mathematics for Social Sciences"
     )
@@ -247,24 +247,93 @@ academic_articles <- base::list(
 )
 ```
 
-```{r data_science_writings}
-data_science_writings <- base::list(
+```{r blogs}
+blogs <- base::list(
   base::list(
     title = "[UnaImagen.uy](https://www.unaimagen.uy/)",
-    loc = "N/A", 
-    end = 2020,
+    loc = "N/A",
+    start = 2020,
+    end = lubridate::year(lubridate::today()),
     description = base::c(
-      "A long with other economits we created a blog where we post data visualizations about Uruguay. Our goal is to make available data that contributes to the public discusion and the national policy debate."
+      "Along with other economists, we created a blog where we post data visualizations about Uruguay. Our goal is to make available data that contributes to the public discussion and the national policy debate."
     )
+  ),
+  base::list(
+    title = "[danielczarnievicz.com](https://danielczarnievicz.netlify.app/portfolio/)",
+    loc = "N/A",
+    start = 2020,
+    end = lubridate::year(lubridate::today()),
+    description = base::c(
+      "In my personal webpage, I share educational resources (and some of my posts in UnaImagen) so that others may use them to learn about different technologies or data science related topics."
+    )
+  )
+)
+```
+
+```{r online_education}
+online_education <- base::list(
+  base::list(
+    title = "The Ultimate Git Course",
+    loc = "codewithmosh.com",
+    start = 2021,
+    end = 2021,
+    description = "Mosh Hamedani's course of Git and GitHub."
+  ),
+  base::list(
+    title = "Complete Python Mastery",
+    loc = "codewithmosh.com",
+    start = 2020,
+    end = 2020,
+    description = "Mosh Hamedani's course of Python programming."
+  ),
+  base::list(
+    title = "Getting and Cleaning Data",
+    loc = "Coursera- Johns Hopkins University",
+    start = 2016,
+    end = 2016,
+    description = "Part of the Johns Hopkins Data Science specialization on Coursera."
+  ),
+  base::list(
+    title = "R Programming",
+    loc = "Coursera- Johns Hopkins University",
+    start = 2016,
+    end = 2016,
+    description = "Part of the Johns Hopkins Data Science specialization on Coursera."
+  ),
+  base::list(
+    title = "The Data Scientist's Toolbox",
+    loc = "Coursera- Johns Hopkins University",
+    start = 2016,
+    end = 2016,
+    description = "Part of the Johns Hopkins Data Science specialization on Coursera."
+  ),
+  base::list(
+    title = "Financial Markets",
+    loc = "Coursera- Yale University",
+    start = 2014,
+    end = 2014,
+    description = "Professor Robert Shiller's course on behavioral finance and financial markets."
+  ),
+  base::list(
+    title = "The Age of Sustainable Development",
+    loc = "Coursera - Columbia University",
+    start = 2014,
+    end = 2014,
+    description = "Professor Jeffrey Sachs's course on the challenges faced by mankind on achieving sustainable development and how to solve them."
+  ),
+  base::list(
+    title = "Economics of Money and Banking (parts 1 and 2)",
+    loc = "Coursera - Columbia University",
+    start = 2013,
+    end = 2013,
+    description = "Professor Perry Mehrling's course on how the global monetary system works."
   )
 )
 ```
 
 ```{css}
 .blocks {
-  
   break-inside: avoid;
-  
 }
 ```
 
@@ -273,7 +342,7 @@ Aside
 
 ![Daniel Czarnievicz](foto_cv.jpg){width=80%}
 
-Contacto {#contact}
+Contact {#contact}
 --------------------------------------------------------------------------------
 
 - <i class="fa fa-envelope"></i> daniel.czarnievicz@gmail.com
@@ -291,10 +360,10 @@ Skills {#skills}
 - Data Analysis
 - R/Python
 - SQL
-- HTML/CSS/JS
-- Git/Github
+- HTML/CSS
+- Git/GitHub
 
-Idiomas {#skills}
+Languages {#skills}
 --------------------------------------------------------------------------------
 
 - Spanish
@@ -309,7 +378,7 @@ Built with R [**pagedown**](https://github.com/rstudio/pagedown).
 The source code is available at [github.com/nstrayer/cv](https://github.com/nstrayer/cv).
 -->
 
-Last update <br> `r stringr::str_to_title(paste0(lubridate::month(lubridate::today(), label = TRUE, abbr = FALSE), ", ", lubridate::year(lubridate::today())))`.
+Last updated on <br> `r stringr::str_to_title(paste0(lubridate::month(lubridate::today(), label = TRUE, abbr = FALSE), ", ", lubridate::year(lubridate::today())))`.
 
 Main
 ================================================================================
@@ -317,9 +386,9 @@ Main
 Daniel Czarnievicz {#title}
 --------------------------------------------------------------------------------
 
-I am interested in challenging Data Science and/or Data Analytics positions with a special focus on those positions that will require the development of Machine Learning algorithms and/or the construction of data analysis apps and dashboards. I am very experienced with R and SQL and have worked with Python and web technologies too.
+I am interested in challenging Data Science and/or Data Analytics positions with a special focus on those that will require the implementation of Machine Learning models and/or the construction of data analysis apps and dashboards. I am very experienced with R, SQL, and Git/GitHub and have worked with Python and web technologies too (HTML and CSS).
 
-I hold dual Uruguayan and Polish citizenship and I'm willing to relocate to other countries in Latin America or Europe. You can find out more about me in my [web page](https://danielczarnievicz.netlify.app/portfolio/) or my [GitHub](https://github.com/daczarne).
+I hold dual Uruguayan and Polish citizenship and I'm willing to relocate to other countries in Latin America or Europe. You can find out more about me on my [web page](https://danielczarnievicz.netlify.app/portfolio/) or my [GitHub](https://github.com/daczarne) profile.
 
 Education {data-icon=graduation-cap data-concise=true}
 --------------------------------------------------------------------------------
@@ -353,7 +422,7 @@ Blog y Communication {data-icon=chart-line}
 --------------------------------------------------------------------------------
 
 ```{r}
-data_science_writings %>% print_section()
+blogs %>% print_section()
 ```
 
 \newpage
@@ -386,4 +455,12 @@ I regularly blog about data science and visualization on my blog [LiveFreeOrDich
 ```{r}
 academic_articles %>% print_section()
 ```
+
+Online education {data-icon=graduation-cap data-concise=true}
+--------------------------------------------------------------------------------
+
+```{r}
+online_education %>% print_section()
+```
+
 
