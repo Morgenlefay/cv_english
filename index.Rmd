@@ -264,7 +264,7 @@ blogs <- base::list(
     start = 2020,
     end = lubridate::year(lubridate::today()),
     description = base::c(
-      "In my personal webpage, I share educational resources (and some of my posts in UnaImagen) so that others may use them to learn about different technologies or data science related topics."
+      "In my personal webpage, I share educational resources so that others may use them to learn about different technologies or data science related topics."
     )
   )
 )
@@ -288,28 +288,28 @@ online_education <- base::list(
   ),
   base::list(
     title = "Getting and Cleaning Data",
-    loc = "Coursera- Johns Hopkins University",
+    loc = "Coursera - Johns Hopkins University",
     start = 2016,
     end = 2016,
     description = "Part of the Johns Hopkins Data Science specialization on Coursera."
   ),
   base::list(
     title = "R Programming",
-    loc = "Coursera- Johns Hopkins University",
+    loc = "Coursera - Johns Hopkins University",
     start = 2016,
     end = 2016,
     description = "Part of the Johns Hopkins Data Science specialization on Coursera."
   ),
   base::list(
     title = "The Data Scientist's Toolbox",
-    loc = "Coursera- Johns Hopkins University",
+    loc = "Coursera - Johns Hopkins University",
     start = 2016,
     end = 2016,
     description = "Part of the Johns Hopkins Data Science specialization on Coursera."
   ),
   base::list(
     title = "Financial Markets",
-    loc = "Coursera- Yale University",
+    loc = "Coursera - Yale University",
     start = 2014,
     end = 2014,
     description = "Professor Robert Shiller's course on behavioral finance and financial markets."
