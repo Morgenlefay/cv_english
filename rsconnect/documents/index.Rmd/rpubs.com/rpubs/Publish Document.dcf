@@ -1,0 +1,10 @@
+name: Publish Document
+title:
+username:
+account: rpubs
+server: rpubs.com
+hostUrl: rpubs.com
+appId: https://api.rpubs.com/api/v1/document/720685/b9289fd2a8f040cf88f054a8f688d9d7
+bundleId: https://api.rpubs.com/api/v1/document/720685/b9289fd2a8f040cf88f054a8f688d9d7
+url: http://rpubs.com/daczarne/720685
+when: 1612310428.21441
